@@ -1,6 +1,6 @@
 {
   "name": "puid",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generate an unique ID for use in distributed environment.",
   "keywords": [
     "oid",
@@ -9,7 +9,11 @@
     "uniqueid",
     "primary key"
   ],
-  "author": "Sascha Droste <sascha.droste@gmail.com>",
+  "author": {
+    "name": "Sascha Droste",
+    "email": "sascha.droste@gmail.com",
+    "url": "https://plus.google.com/118215422942628160262/about"
+  },
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
