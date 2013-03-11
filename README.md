@@ -22,7 +22,7 @@ $ npm install puid
 
 ## Running unit tests
 
-[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid]/puid)
+[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
 
 ```
 $ npm test
