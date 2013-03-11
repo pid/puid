@@ -1,0 +1,30 @@
+{
+  "name": "puid",
+  "version": "0.2.0",
+  "description": "Generate an unique ID for use in distributed environment.",
+  "keywords": [
+    "oid",
+    "uid",
+    "uuid",
+    "uniqueid",
+    "primary key"
+  ],
+  "author": "Sascha Droste <sascha.droste@gmail.com>",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pid/puid.git"
+  },
+    "engines": {
+    "node": "*"
+  },
+  "license": "MIT"
+}
