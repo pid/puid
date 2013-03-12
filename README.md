@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid]/puid)
+[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
 
 # puid - primary unique id
 Generate an unique ID depends on time, machine and process for use in distributed environment.
