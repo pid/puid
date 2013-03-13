@@ -1,13 +1,14 @@
 {
   "name": "puid",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Generate an unique ID for use in distributed environment.",
   "keywords": [
     "oid",
     "uid",
     "uuid",
     "uniqueid",
-    "primary key"
+    "primary key",
+    "distributed environment"
   ],
   "author": {
     "name": "Sascha Droste",
