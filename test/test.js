@@ -98,7 +98,12 @@ describe('lib/puid.js', function() {
       }).should.not.throwError();
     });
   });
-})
+  describe('check package.json', function() {
+    it('if format is valid', function() {
+      require('../package.json');
+    });
+  });
+});
 
 
 var m0 = {
