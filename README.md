@@ -1,24 +1,24 @@
 [![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
 
 # puid - primary unique id 
-Generate an unique ID depends on time, machine and process for use in a distributed environment.
+Generate an unique ID depending on time, machine and process for use in a distributed environment.
 
-Each unique ID has 4 sections and has 24 chars which are:
+Each unique ID has 4 sections and has 24 chars, which are:
 
   i.e. he5fps6l2504cd1w3ag8ut8e // he5fps6l-2504cd-1w3a-g8ut8e
  
-  - timestamp:    'he5fps6l'  // Timestamp in microseconds- safe until 2059
-  - machineId:    '2504cd'    // first 6 chars from md5 of first external network interface or fallback from hostname
+  - timestamp:    'he5fps6l'  // Timestamp in microseconds - safe until 2059
+  - machineId:    '2504cd'    // First 6 chars from md5 of first external network interface or fallback to hostname
   - processId:    '1w3a'      // pid
-  - counter:      'g8ut8e'    // high-resolution real time; nanoseconds
+  - counter:      'g8ut8e'    // High-resolution real time; nanoseconds
 
 All values (except machineID) are converted to base36.
 
-Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter; that the same process will execute the counter function within the same nanosecond should be impossible (imo) - feedback is welcome.
+Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter. That the same process will execute the counter function within the same nanosecond should be impossible (imo) - feedback is welcome.
 
 ## Why it exists?
-People asking why I build this piece of code, there are so much solutions around.
-The reason is simple, I wanted a short as possible primary key for distributed environments. UUIDv4 was not an option for several reasons. One of them is that the id is 36 characters long ;-). Other solutions were not convincing either. Size matters? Yes! :-) 24 is better than 36.
+People are asking why I build this piece of code, there are so many solutions around.
+The reason is simple: I wanted an as short as possible primary key for distributed environments. UUIDv4 was not an option for several reasons. One of them is that the id is 36 characters long ;-). Other solutions were not convincing either. Size matters? Yes! :-) 24 is better than 36.
 
 ## Installation
 
