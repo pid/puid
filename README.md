@@ -1,18 +1,24 @@
 [![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
 
-# puid - primary unique id
-Generate an unique ID depends on time, machine and process for use in distributed environment.
+# puid - primary unique id 
+Generate an unique ID depends on time, machine and process for use in a distributed environment.
 
-Each unique ID has 4 sections which are:
+Each unique ID has 4 sections and has 24 chars which are:
 
   i.e. he5fps6l2504cd1w3ag8ut8e // he5fps6l-2504cd-1w3a-g8ut8e
-
-  - timestamp:    'he5fps6l'  // Timestamp in microseconds
-  - machineId:    '2504cd'    // the first external device, md5 to the address (IPv4/IPv6)
+ 
+  - timestamp:    'he5fps6l'  // Timestamp in microseconds- safe until 2059
+  - machineId:    '2504cd'    // the first external device, md5 to the address (IPv4/IPv6), fallback = hostname
   - processId:    '1w3a'      // pid
   - counter:      'g8ut8e'    // high-resolution real time; nanoseconds
 
-All values are converted to base36.
+All values (except machineID) are converted to base36.
+
+Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter; that the same process will execute the counter function within the same nanosecond should be impossible - feedback is welcome.
+
+## Why it exists?
+People asking why I build this piece of code, there are so much solutions around.
+The reason is simple, I wanted a short as possible primary key for distributed environments. UUIDv4 was not an option for several reasons. One of them is that the id is 36 characters long ;-). Other solutions were not convincing either. Size matters? Yes! :-) 24 is better than 36.
 
 ## Installation
 
@@ -20,12 +26,12 @@ All values are converted to base36.
 $ npm install puid
 ```
 
-## Running unit tests
+## Running tests
 
 [![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
 
-```
-$ npm test
+```bash
+	$ npm test
 ```
 
 ## Usage
