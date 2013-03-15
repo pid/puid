@@ -36,8 +36,8 @@ describe('lib/puid.js', function() {
       pid.getMachineId().should.match(/[a-z0-9]/);
     });
     it('should use consistent fallback value', function() {
-      pid.getMachineId(m3).should.be.equal('d13e79');
-      pid.getMachineId(m3).should.have.length(6);
+      pid.getMachineId(m3, 'localhost').should.be.equal('d13e79');
+      pid.getMachineId(m3, 'localhost').should.have.length(6);
     });
     it('should use consistent fallback value without external network interfaces', function() {
       pid.getMachineId({}, 'localhost').should.be.equal('d13e79');
