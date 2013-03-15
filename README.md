@@ -8,13 +8,13 @@ Each unique ID has 4 sections and has 24 chars which are:
   i.e. he5fps6l2504cd1w3ag8ut8e // he5fps6l-2504cd-1w3a-g8ut8e
  
   - timestamp:    'he5fps6l'  // Timestamp in microseconds- safe until 2059
-  - machineId:    '2504cd'    // the first external device, md5 to the address (IPv4/IPv6), fallback = hostname
+  - machineId:    '2504cd'    // md5 from hostname; first 6 chars
   - processId:    '1w3a'      // pid
   - counter:      'g8ut8e'    // high-resolution real time; nanoseconds
 
 All values (except machineID) are converted to base36.
 
-Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter; that the same process will execute the counter function within the same nanosecond should be impossible - feedback is welcome.
+Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter; that the same process will execute the counter function within the same nanosecond should be impossible (imo) - feedback is welcome.
 
 ## Why it exists?
 People asking why I build this piece of code, there are so much solutions around.
