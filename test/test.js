@@ -33,8 +33,19 @@ describe('lib/puid.js', function() {
       pid.getMachineId(m2).should.be.eql('dcfbe5');
     });
     it('should be a sexhex value', function() {
-      pid.getProcessId().should.match(/[a-z0-9]/);
+      pid.getMachineId().should.match(/[a-z0-9]/);
     });
+    it('should use consistent fallback value', function() {
+      pid.getMachineId(m3).should.be.equal('d13e79');
+      pid.getMachineId(m3).should.have.length(6);
+    });
+    it('should use consistent fallback value without external network interfaces', function() {
+      pid.getMachineId({}, 'localhost').should.be.equal('d13e79');
+      pid.getMachineId({}, 'localhost').should.have.length(6);
+    });
+
+
+
   });
 
   describe('getProcessId', function() {
@@ -221,4 +232,34 @@ var m2 = {
     family: 'IPv6',
     internal: false
   }]
-}
+};
+
+var m3 = {
+  Ethernet:   [{
+    address: 'fe80::cabf:e927:f866:8f3e',
+    family: 'IPv6',
+    internal: true
+  }, {
+    address: '10.16.16.22',
+    family: 'IPv4',
+    internal: true
+  }],
+  'Loopback Pseudo-Interface 1':   [{
+    address: '::1',
+    family: 'IPv6',
+    internal: true
+  }, {
+    address: '127.0.0.1',
+    family: 'IPv4',
+    internal: true
+  }],
+  'LAN-Verbindung* 11':   [{
+    address: '2001:3450:5af1:29fe:375a:fb8f:e54f:af39',
+    family: 'IPv6',
+    internal: true
+  }, {
+    address: 'fe80::8493:ab4f:e54f:cf39',
+    family: 'IPv6',
+    internal: true
+  }]
+};
