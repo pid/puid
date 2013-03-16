@@ -31,19 +31,19 @@ $ npm install puid
 [![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
 
 ```bash
-	$ npm test
+$ npm test
 ```
 
 ## Usage
 
 ```js
-    var puid = require('puid');
-    console.log(puid.generate());
-    console.log(puid.generate());
+var puid = require('puid');
+console.log(puid.generate());
+console.log(puid.generate());
 
-    // Output:
-    // he5gawzw2504cd1w6x83z1kr
-    // he5gawzw2504cd1w6x83ziw1
+// Output:
+// he5gawzw2504cd1w6x83z1kr
+// he5gawzw2504cd1w6x83ziw1
 ```
 
 ## License

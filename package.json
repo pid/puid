@@ -1,6 +1,6 @@
 {
   "name": "puid",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Generate an unique ID for use in distributed environment.",
   "keywords": [
     "oid",
