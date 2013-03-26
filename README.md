@@ -37,7 +37,9 @@ $ npm test
 ## Usage
 
 ```js
-var puid = require('puid');
+var Puid = require('puid'),
+    puid = new Puid();
+    
 console.log(puid.generate());
 console.log(puid.generate());
 

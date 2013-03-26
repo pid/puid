@@ -1,5 +1,6 @@
 
-var puid = require('../lib/puid');
+var Puid = require('../lib/puid'),
+    puid = new Puid();
 // var puid = require('puid');
 
 var repetitions = 2000000;

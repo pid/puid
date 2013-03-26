@@ -1,6 +1,6 @@
 
-var puid = require('../lib/puid');
-// var puid = require('puid');
+var Puid = require('../lib/puid'),
+    puid = new Puid();
 
 console.dir(puid);
 

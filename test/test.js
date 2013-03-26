@@ -1,5 +1,6 @@
-var pid = require('../lib/puid'),
-  should = require('should');
+var Puid = require('../lib/puid'),
+    pid = new Puid(),
+    should = require('should');
 
 var oldpid = pid.generate();
 
