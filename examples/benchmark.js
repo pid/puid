@@ -1,14 +1,13 @@
-
 var Puid = require('../lib/puid'),
-    puid = new Puid();
-// var puid = require('puid');
+  puid = new Puid();
+// var Puid = require('puid');
 
 var repetitions = 2000000;
 
-console.time('generated '+ repetitions + ' PUIDs');
+console.time('generated ' + repetitions + ' PUIDs');
 
 for (var i = 0; i < repetitions; i++) {
-    puid.generate();
+  puid.generate();
 }
 
-console.timeEnd('generated '+ repetitions + ' PUIDs');
+console.timeEnd('generated ' + repetitions + ' PUIDs');
