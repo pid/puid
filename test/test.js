@@ -1,6 +1,6 @@
 var Puid = require('../lib/puid'),
-    pid = new Puid(),
-    should = require('should');
+  pid = new Puid(),
+  should = require('should');
 
 var oldpid = pid.generate();
 
@@ -44,9 +44,6 @@ describe('lib/puid.js', function() {
       pid.getMachineId({}, 'localhost').should.be.equal('d13e79');
       pid.getMachineId({}, 'localhost').should.have.length(6);
     });
-
-
-
   });
 
   describe('getProcessId', function() {
@@ -60,6 +57,9 @@ describe('lib/puid.js', function() {
     it('two request should be equal', function() {
       pid.getProcessId().should.equal(pid.getProcessId());
     });
+    it('internal function process.pid is available', function() {
+      (typeof process.pid).should.not.be.equal('undefined');
+    });
   });
 
   describe('getCounter', function() {
@@ -72,6 +72,9 @@ describe('lib/puid.js', function() {
     });
     it('two request should not be equal', function() {
       pid.getCounter().should.not.equal(pid.getCounter());
+    });
+    it('internal function process.hrtime is available', function() {
+      (typeof process.hrtime).should.not.be.equal('undefined');
     });
   });
 
@@ -106,7 +109,7 @@ describe('lib/puid.js', function() {
     });
     it('should not throw an error, use default padding', function() {
       (function() {
-        pid.toBase36String('1000','foobar');
+        pid.toBase36String('1000', 'foobar');
       }).should.not.throwError();
     });
   });
