@@ -20,6 +20,9 @@ Why is the counter not really a counter? Because of collision, it's more likely 
 People are asking why I build this piece of code, there are so many solutions around.
 The reason is simple: I wanted an as short as possible primary key for distributed environments. UUIDv4 was not an option for several reasons. One of them is that the id is 36 characters long ;-). Other solutions were not convincing either. Size matters? Yes! :-) 24 is better than 36.
 
+## Usecase
+Generate unique keys for e.g. Redis.
+
 ## Installation
 
 ```bash
