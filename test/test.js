@@ -58,6 +58,7 @@ describe('lib/puid.js', function() {
       pid.getProcessId().should.equal(pid.getProcessId());
     });
     it('internal function process.pid is available', function() {
+      (process).should.be.a('object');
       (typeof process.pid).should.not.be.equal('undefined');
     });
   });
@@ -74,6 +75,7 @@ describe('lib/puid.js', function() {
       pid.getCounter().should.not.equal(pid.getCounter());
     });
     it('internal function process.hrtime is available', function() {
+      (process).should.be.a('object');
       (typeof process.hrtime).should.not.be.equal('undefined');
     });
   });
