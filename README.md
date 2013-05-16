@@ -25,12 +25,12 @@ Why is the counter not really a counter? Because of collision, it's more likely 
 
 Each unique ID has 2 sections and has 12 chars without nodeId or 14 chars with nodeId, which are:
 
-    i.e. aeby6ob5sso4zd // aeby6ob5sso4-zd
+    i.e. with 14-chars: aeby6ob5sso4zd // aeby6ob5sso4-zd
 
     - timestamp:    'aeby6ob5sso4'  // (12) Timestamp in seconds + hrtime counter
     - nodeId:       'zd'            // (2) nodeId
 
-After the first puid release, I was testing for some shorter UIDs. In result, the short-puid was born ;-). Works only with node.js (depend on process.hrtime). The process.hrtime[1] gives you an counter (milliseconds+nanoseconds value from 1 to 1_000_000_000) not depending of the current timestamp, in result you can use puid-short (12 chars version) without any conflicts with multi-instances of puid in the same process or in different processes on the same host (tested with 20 parallel instances generating 4 billion puids). With multi nodes/hosts, you have to use the short-version with 14 chars which includes a nodeId.
+After the first puid release, I was testing for some shorter UIDs. In result, the short-puid was born ;-). Works only with node.js (depends on process.hrtime). The process.hrtime[1] gives you a counter (milliseconds+nanoseconds value from 1 to 1_000_000_000) not depending of the current timestamp; in result you can use short-puid (12 chars version) without any conflicts with multi-instances of puid in the same process or in different processes on the same host (tested with 20 parallel instances generating 4 billion puids). With multi nodes/hosts, you have to use the short-version with 14 chars which includes a nodeId.
 
 
 ### Configure short-puid
