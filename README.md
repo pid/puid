@@ -31,14 +31,9 @@ Each unique ID has 2 sections and has 12 chars without nodeId or 14 chars with n
     - nodeId:       'zd'            // (2) nodeId
 
 After the first puid release, I was testing for some shorter UIDs. In result, the short-puid was born ;-). Works only with node.js (depend on process.hrtime). The process.hrtime[1] gives you an counter (milliseconds+nanoseconds value from 1 to 1_000_000_000) not depending of the current timestamp, in result you can use puid-short (12 chars version) without any conflicts with multi-instances of puid in the same process or in different processes on the same host (tested with 20 parallel instances generating 4 billion puids). With multi nodes/hosts, you have to use the short-version with 14 chars which includes a nodeId.
-  
-    i.e. aeby6ob5sso4zd // aeby6ob5sso4-zd
-
-    - timestamp:    'aeby6ob5sso4'  // (12) Timestamp in seconds + hrtime counter
-    - nodeId:       'zd'            // (2) nodeId
 
 
-### Configurate short-puid
+### Configure short-puid
 
 You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-08-02 03:00:00 pm", and you can pass the nodeId. Take a look to the usage section for all possiblities.
 
@@ -47,11 +42,13 @@ You have options :-) You can pass the epoch to start counting the timestamp, per
 
 Generate unique keys for e.g. Redis.
 
+
 ## Installation
 
 ```bash
 $ npm install puid
 ```
+
 
 ## Running tests
 
@@ -60,6 +57,7 @@ $ npm install puid
 ```bash
 $ npm test
 ```
+
 
 ## Usage
 
@@ -133,10 +131,14 @@ console.log(puid.generate());	 // 3bqk9my9buecut
 
 ```
 
+
 ## Changes
+
 - v0.4.0 added short-puid, long-puid behavior is unchanged
 
+
 ## License
+
 [MIT](https://github.com/pid/puid/blob/master/LICENCE.txt)
 
 Copyright (c) 2013 Sascha Droste <sascha.droste@gmail.com>
