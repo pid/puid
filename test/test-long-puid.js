@@ -4,7 +4,7 @@ var Puid = require('../lib/puid'),
 
 var oldpid = pid.generate();
 
-describe('lib/puid.js', function() {
+describe('test long puid', function() {
 
   describe('getTimestamp', function() {
     it('should be a string with 8 chars', function() {
@@ -19,30 +19,30 @@ describe('lib/puid.js', function() {
     });
   });
 
-  describe('getMachineId', function() {
+  describe('getNodeId', function() {
     it('should be a string with 6 chars', function() {
-      pid.getMachineId().should.be.a('string');
-      pid.getMachineId().should.have.length(6);
+      pid.getNodeId().should.be.a('string');
+      pid.getNodeId().should.have.length(6);
     });
     it('should be 089776', function() {
-      pid.getMachineId(m0).should.be.eql('089776');
+      pid.getNodeId(m0).should.be.eql('089776');
     });
     it('should be a093d8', function() {
-      pid.getMachineId(m1).should.be.eql('a093d8');
+      pid.getNodeId(m1).should.be.eql('a093d8');
     });
     it('should be dcfbe5', function() {
-      pid.getMachineId(m2).should.be.eql('dcfbe5');
+      pid.getNodeId(m2).should.be.eql('dcfbe5');
     });
     it('should be a sexhex value', function() {
-      pid.getMachineId().should.match(/[a-z0-9]/);
+      pid.getNodeId().should.match(/[a-z0-9]/);
     });
     it('should use consistent fallback value', function() {
-      pid.getMachineId(m3, 'localhost').should.be.equal('d13e79');
-      pid.getMachineId(m3, 'localhost').should.have.length(6);
+      pid.getNodeId(m3, 'localhost').should.be.equal('d13e79');
+      pid.getNodeId(m3, 'localhost').should.have.length(6);
     });
     it('should use consistent fallback value without external network interfaces', function() {
-      pid.getMachineId({}, 'localhost').should.be.equal('d13e79');
-      pid.getMachineId({}, 'localhost').should.have.length(6);
+      pid.getNodeId({}, 'localhost').should.be.equal('d13e79');
+      pid.getNodeId({}, 'localhost').should.have.length(6);
     });
   });
 
