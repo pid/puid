@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
+[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)[![NPM version](https://badge.fury.io/js/puid.png)](http://badge.fury.io/js/puid)
 
 # puid - primary unique id
 
@@ -44,6 +44,7 @@ Generate unique keys for e.g. Redis.
 
 
 ## Installation
+[![NPM version](https://badge.fury.io/js/puid.png)](http://badge.fury.io/js/puid)
 
 ```bash
 $ npm install puid
@@ -72,10 +73,22 @@ puid = new Puid();
 console.log(puid.generate());   // hgqy29gr11cm2504cdf8rg7q
 
 
+// generate puid (short-version 12-chars) without nodeId / **Shortcut**
+
+puid = new Puid(true);
+console.log(puid.generate());  // 3bqk9my968mc
+
+
+// generate puid (short-version 14-chars) random nodeId / **Shortcut**
+
+puid = new Puid(false);
+console.log(puid.generate());  // 3bqk9my9buecut
+
+
 // generate puid (short-version 14-chars) with nodeId string
 
 puid = new Puid('JS');
-console.log(puid.generate());   // 3bq1plt0vlycjs
+console.log(puid.generate());   // 3bq1plt0vlycjs // 3bq1plt0vlyc->(js)
 
 
 // generate puid (short-version 12-chars) with empty nodeId string
@@ -89,7 +102,7 @@ console.log(puid.generate());   // 3bq1plt1iiw4
 puid = new Puid({
     nodeId: 'JS'
 });
-console.log(puid.generate());   // 3bq1plt1ljwgjs
+console.log(puid.generate());   // 3bq1plt1ljwgjs // 3bq1plt1ljwg->(js)
 
 
 // generate puid (short-version 14-chars) with epoch in config object and random nodeId
@@ -106,7 +119,7 @@ puid = new Puid({
     epoch: '1980-01-01',
     nodeId: 'JS'
 });
-console.log(puid.generate());   // 801eeqggyo00js
+console.log(puid.generate());   // 801eeqggyo00js // 801eeqggyo00->(js)
 
 
 // generate puid (short-version 12-chars) with epoch and empty nodeId in config object
@@ -118,28 +131,14 @@ puid = new Puid({
 console.log(puid.generate());   // 036pqlnkkjk0
 
 
-// generate puid (short-version 12-chars) without nodeId / Shortcut new Puid(true)!
-
-puid = new Puid(true);
-console.log(puid.generate());	 // 3bqk9my968mc
-
-
-// generate puid (short-version 14-chars) random nodeId / Shortcut new Puid(false)!
-
-puid = new Puid(false);
-console.log(puid.generate());	 // 3bqk9my9buecut
-
 ```
 
 
-## Changes
-
-- v0.4.0 added short-puid, long-puid behavior is unchanged
-
+## [Changelog](https://raw.github.com/pid/puid/master/Changelog)
 
 ## License
 
-[MIT](https://github.com/pid/puid/blob/master/LICENCE.txt)
+[MIT](https://raw.github.com/pid/puid/master/LICENCE)
 
 Copyright (c) 2013 Sascha Droste <sascha.droste@gmail.com>
 
