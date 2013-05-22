@@ -103,7 +103,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(14);
         pid.generate()
-            .should.match(/^7re/);
+            .should.match(/^7r/);
         pid.generate()
             .should.match(/[a-z0-9]+/)
 
@@ -123,7 +123,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/qq$/);
         pid.generate()
-            .should.match(/^7re/);
+            .should.match(/^7r/);
         pid.generate()
             .should.match(/[a-z0-9]+/)
     });
@@ -139,7 +139,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(14);
         pid.generate()
-            .should.match(/^2q5/);
+            .should.match(/^2q/);
         pid.generate()
             .should.match(/[a-z0-9]+/)
 
