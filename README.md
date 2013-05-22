@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)[![NPM version](https://badge.fury.io/js/puid.png)](http://badge.fury.io/js/puid)
+[![Build Status](https://travis-ci.org/pid/puid.png)](https://travis-ci.org/pid/puid)
+[![NPM version](https://badge.fury.io/js/puid.png)](http://badge.fury.io/js/puid)
 
 # puid - primary unique id
 
