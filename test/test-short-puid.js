@@ -23,7 +23,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/ab$/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
     });
 
     it('with explicit nodeId as uppercase string', function () {
@@ -36,7 +36,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/ab$/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
     });
 
     it('with random nodeId', function () {
@@ -47,7 +47,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(14);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -59,7 +59,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(12);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -73,7 +73,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(12);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -89,7 +89,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/tt$/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
     });
 
     it('with config object set epoch to YYYY (32 years ago)', function () {
@@ -105,7 +105,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^7r/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -125,7 +125,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^7r/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
     });
 
     it('with config object set epoch to YYYY (11 years ago)', function () {
@@ -141,8 +141,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^2q/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
-
+            .should.match(/[a-z0-9]+/);
     });
 
     it('with config object set epoch to YYYY-MM-DD HH:MM:SS', function () {
@@ -158,7 +157,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^2mvoda/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -175,7 +174,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^08miku/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -192,7 +191,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^2mvod/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -209,7 +208,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.match(/^2mvod/);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
 
     });
 
@@ -221,7 +220,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(12);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
     });
 
     it('with param "false"', function () {
@@ -232,7 +231,7 @@ describe('test short puid', function () {
         pid.generate()
             .should.have.length(14);
         pid.generate()
-            .should.match(/[a-z0-9]+/)
+            .should.match(/[a-z0-9]+/);
     });
 });
 
