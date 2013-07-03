@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Puid - Primary unique ID by pid</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Puid - Primary unique ID</h1>
+        <h2>Generate an unique ID depending on time, machine and process for use in a distributed environment.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/pid/puid/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/pid/puid/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/pid/puid" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a>
+<a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
+
+<h1>
+<a name="puid---primary-unique-id" class="anchor" href="#puid---primary-unique-id"><span class="octicon octicon-link"></span></a>puid - primary unique id</h1>
+
+<p>Generate an unique ID depending on time, machine and process for use in a distributed environment.</p>
+
+<h2>
+<a name="puid---24-characters-uid" class="anchor" href="#puid---24-characters-uid"><span class="octicon octicon-link"></span></a>puid - 24 characters uid</h2>
+
+<p>Each unique ID has 4 sections and has 24 chars, which are:</p>
+
+<p>i.e. he5fps6l2504cd1w3ag8ut8e // he5fps6l-2504cd-1w3a-g8ut8e</p>
+
+<ul>
+<li>timestamp:    'he5fps6l'  // (8) Timestamp in microseconds - safe until 2059</li>
+<li>machineId:    '2504cd'    // (6) First 6 chars from md5 of first external network interface or fallback to hostname</li>
+<li>processId:    '1w3a'      // (4) pid</li>
+<li>counter:      'g8ut8e'    // (6) High-resolution real time; nanoseconds</li>
+</ul><p>All values (except machineID) are converted to base36.</p>
+
+<p>Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter. That the same process will execute the counter function within the same nanosecond should be impossible (imo) - feedback is welcome.</p>
+
+<h2>
+<a name="puid---short-puid---12-14-characters-uid" class="anchor" href="#puid---short-puid---12-14-characters-uid"><span class="octicon octicon-link"></span></a>puid - short puid - 12-14 characters uid</h2>
+
+<p>Each unique ID has 2 sections and has 12 chars without nodeId or 14 chars with nodeId, which are:</p>
+
+<pre><code>i.e. with 14-chars: aeby6ob5sso4zd // aeby6ob5sso4-zd
+
+- timestamp:    'aeby6ob5sso4'  // (12) Timestamp in seconds + hrtime counter
+- nodeId:       'zd'            // (2) nodeId
+</code></pre>
+
+<p>After the first puid release, I was testing for some shorter UIDs. In result, the short-puid was born ;-). Works only with node.js (depends on process.hrtime). The process.hrtime[1] gives you a counter (milliseconds+nanoseconds value from 1 to 1_000_000_000) not depending of the current timestamp; in result you can use short-puid (12 chars version) without any conflicts with multi-instances of puid in the same process or in different processes on the same host (tested with 20 parallel instances generating 4 billion puids). With multi nodes/hosts, you have to use the short-version with 14 chars which includes a nodeId.</p>
+
+<h3>
+<a name="configure-short-puid" class="anchor" href="#configure-short-puid"><span class="octicon octicon-link"></span></a>Configure short-puid</h3>
+
+<p>You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-08-02 03:00:00 pm", and you can pass the nodeId. Take a look to the usage section for all possiblities.</p>
+
+<h2>
+<a name="usecase" class="anchor" href="#usecase"><span class="octicon octicon-link"></span></a>Usecase</h2>
+
+<p>Generate unique keys for e.g. Redis.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
+
+<div class="highlight"><pre><span class="nv">$ </span>npm install puid
+</pre></div>
+
+<h2>
+<a name="running-tests" class="anchor" href="#running-tests"><span class="octicon octicon-link"></span></a>Running tests</h2>
+
+<p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a></p>
+
+<div class="highlight"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight"><pre>
+<span class="kd">var</span> <span class="nx">Puid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'puid'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">puid</span><span class="p">;</span>
+
+<span class="c1">// generate puid (long-version 24-chars) </span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// hgqy29gr11cm2504cdf8rg7q</span>
+
+
+<span class="c1">// generate puid (short-version 12-chars) without nodeId / **Shortcut**</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>  <span class="c1">// 3bqk9my968mc</span>
+
+
+<span class="c1">// generate puid (short-version 14-chars) random nodeId / **Shortcut**</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>  <span class="c1">// 3bqk9my9buecut</span>
+
+
+<span class="c1">// generate puid (short-version 14-chars) with nodeId string</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="s1">'JS'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 3bq1plt0vlycjs // 3bq1plt0vlyc-&gt;(js)</span>
+
+
+<span class="c1">// generate puid (short-version 12-chars) with empty nodeId string</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 3bq1plt1iiw4</span>
+
+
+<span class="c1">// generate puid (short-version 14-chars) with nodeId in config object</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
+    <span class="nx">nodeId</span><span class="o">:</span> <span class="s1">'JS'</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 3bq1plt1ljwgjs // 3bq1plt1ljwg-&gt;(js)</span>
+
+
+<span class="c1">// generate puid (short-version 14-chars) with epoch in config object and random nodeId</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
+    <span class="nx">epoch</span><span class="o">:</span> <span class="s1">'1980-01-01'</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 801eeqggvq0w54</span>
+
+
+<span class="c1">// generate puid (short-version 14-chars) with epoch and nodeId in config object</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
+    <span class="nx">epoch</span><span class="o">:</span> <span class="s1">'1980-01-01'</span><span class="p">,</span>
+    <span class="nx">nodeId</span><span class="o">:</span> <span class="s1">'JS'</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 801eeqggyo00js // 801eeqggyo00-&gt;(js)</span>
+
+
+<span class="c1">// generate puid (short-version 12-chars) with epoch and empty nodeId in config object</span>
+
+<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
+    <span class="nx">epoch</span><span class="o">:</span> <span class="s1">'2013-01-01'</span><span class="p">,</span>
+    <span class="nx">nodeId</span><span class="o">:</span> <span class="s1">''</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 036pqlnkkjk0</span>
+
+
+</pre></div>
+
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a><a href="https://raw.github.com/pid/puid/master/Changelog">Changelog</a>
+</h2>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="https://raw.github.com/pid/puid/master/LICENCE">MIT</a></p>
+
+<p>Copyright (c) 2013 Sascha Droste <a href="mailto:sascha.droste@gmail.com">sascha.droste@gmail.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
