@@ -139,7 +139,7 @@ console.log(puid.generate());   // 036pqlnkkjk0
 
 ## License
 
-[MIT](https://raw.github.com/pid/puid/master/LICENCE)
+[MIT](https://raw.github.com/pid/puid/master/LICENSE)
 
 Copyright (c) 2013 Sascha Droste <sascha.droste@gmail.com>
 
