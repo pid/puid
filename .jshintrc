@@ -1,20 +1,32 @@
-{ 
-    "es5": true
-  , "strict": false
-  , "node": true
-  , "browser": true
-  , "jquery": true
-   
-  , "onevar": false
-  , "indent": 2
-  , "laxcomma": true
-  , "laxbreak": true
-   
-  , "eqeqeq": true
-  , "immed": true
-  , "undef": true
-  , "unused": true
-  , "latedef": true
-  , "curly": true
-  , "trailing": true
+{
+  "es5": true,
+  "strict": false,
+  "node": true,
+  "browser": true,
+  "jquery": true,
+  "onevar": false,
+  "indent": 4,
+  "laxcomma": true,
+  "laxbreak": true,
+  "eqeqeq": true,
+  "immed": true,
+  "undef": true,
+  "unused": true,
+  "latedef": true,
+  "curly": true,
+  "trailing": true,
+  "globals": {
+    "global": true,
+    "process": true,
+    "console": true,
+    "Buffer": true,
+    "require": true,
+    "__filename": true,
+    "__dirname": true,
+    "module": true,
+    "exports": true,
+    "describe": true,
+    "it": true,
+    "define": true
+  }
 }
