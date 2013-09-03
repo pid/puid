@@ -1,6 +1,6 @@
 {
   "name": "puid",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Generate an unique ID for use in a distributed environment.",
   "keywords": [
     "oid",
@@ -8,7 +8,8 @@
     "uuid",
     "uniqueid",
     "primary key",
-    "distributed environment"],
+    "distributed environment"
+  ],
   "author": {
     "name": "Sascha Droste",
     "email": "sascha.droste@gmail.com",
@@ -18,7 +19,12 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "~1.12.0",
-    "should": "~1.2.2"
+    "should": "~1.2.2",
+    "grunt-cafe-mocha": "~0.1.8",
+    "grunt-release": "~0.5.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.1"
   },
   "scripts": {
     "test": "mocha -R spec"
@@ -30,8 +36,10 @@
   "engines": {
     "node": ">=0.8.0"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://raw.github.com/pid/puid/master/LICENSE"
-  }]
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/pid/puid/master/LICENSE"
+    }
+  ]
 }
