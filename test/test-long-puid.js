@@ -1,3 +1,5 @@
+/* jshint -W015: true, -W030: true */
+
 var Puid = require('../lib/puid');
 var pid = new Puid();
 
@@ -43,7 +45,7 @@ var m0 = {
 };
 
 var m1 = {
-    Drahtlosnetzwerkverbindung:  [{
+    'Drahtlosnetzwerkverbindung':  [{
             address: 'fe80::f322:3e0f:ced6:5b83',
             family: 'IPv6',
             internal: false
@@ -284,7 +286,7 @@ describe('test long puid', function() {
     });
 
     describe('generate pId', function() {
-        
+
         it('should be a string with 24 chars', function() {
             pid.generate()
                 .should.be.a('string');
@@ -296,7 +298,7 @@ describe('test long puid', function() {
             pid.generate()
                 .should.match(/[a-z0-9]/);
         });
-        
+
         it('two request should not be equal', function() {
             pid.generate()
                 .should.not.equal(pid.generate());
@@ -323,17 +325,17 @@ describe('test long puid', function() {
             pid.toBase36String('1000000', 4)
                 .should.be.equal('lfls');
         });
-        
+
         it('should throw an error', function() {
-            !function() {
+            ! function() {
                 pid.toBase36String('foobar', 4);
             }.should.throwError(/foobar/);
         });
 
         it('should not throw an error, use default padding', function() {
-            (function() {
+            ! function() {
                 pid.toBase36String('1000', 'foobar');
-            })
+            }
                 .should.not.throwError();
         });
     });
