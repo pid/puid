@@ -1,33 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
     <title>Puid - Primary unique ID by pid</title>
-  </head>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+  </head>
   <body>
 
-    <header>
-      <div class="container">
+      <header>
         <h1>Puid - Primary unique ID</h1>
-        <h2>Generate an unique ID depending on time, machine and process for use in a distributed environment.</h2>
+        <p>Generate an unique ID depending on time, machine and process for use in a distributed environment.</p>
+      </header>
 
-        <section id="downloads">
-          <a href="https://github.com/pid/puid/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/pid/puid/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/pid/puid" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+      <div id="banner">
+        <span id="logo"></span>
 
-    <div class="container">
-      <section id="main_content">
+        <a href="https://github.com/pid/puid" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/pid/puid/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/pid/puid/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
         <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a>
 <a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
 
@@ -68,7 +79,7 @@
 <h3>
 <a name="configure-short-puid" class="anchor" href="#configure-short-puid"><span class="octicon octicon-link"></span></a>Configure short-puid</h3>
 
-<p>You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-08-02 03:00:00 pm", and you can pass the nodeId. Take a look to the usage section for all possiblities.</p>
+<p>You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-06-07 03:00:00 pm GMT", and you can pass the nodeId. Take a look to the usage section for all possiblities.</p>
 
 <h2>
 <a name="usecase" class="anchor" href="#usecase"><span class="octicon octicon-link"></span></a>Usecase</h2>
@@ -80,7 +91,7 @@
 
 <p><a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm install puid
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm install puid
 </pre></div>
 
 <h2>
@@ -88,13 +99,13 @@
 
 <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a></p>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
 </pre></div>
 
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<div class="highlight"><pre>
+<div class="highlight highlight-js"><pre>
 <span class="kd">var</span> <span class="nx">Puid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'puid'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">puid</span><span class="p">;</span>
 
@@ -171,7 +182,7 @@
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p><a href="https://raw.github.com/pid/puid/master/LICENCE">MIT</a></p>
+<p><a href="https://raw.github.com/pid/puid/master/LICENSE">MIT</a></p>
 
 <p>Copyright (c) 2013 Sascha Droste <a href="mailto:sascha.droste@gmail.com">sascha.droste@gmail.com</a></p>
 
@@ -193,8 +204,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</p>
       </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/pid">pid</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
