@@ -1,5 +1,4 @@
 /* jshint -W015: true, -W030: true */
-
 var Puid = require('../lib/puid');
 var pid = new Puid();
 
@@ -45,7 +44,7 @@ var m0 = {
 };
 
 var m1 = {
-    'Drahtlosnetzwerkverbindung':  [{
+    'Drahtlosnetzwerkverbindung': [{
             address: 'fe80::f322:3e0f:ced6:5b83',
             family: 'IPv6',
             internal: false
@@ -66,7 +65,7 @@ var m1 = {
         }
     ],
 
-    'VMware Network Adapter VMnet1':  [{
+    'VMware Network Adapter VMnet1': [{
             address: 'fe80::1c3e:c641:340e:ea23',
             family: 'IPv6',
             internal: false
@@ -335,8 +334,7 @@ describe('test long puid', function() {
         it('should not throw an error, use default padding', function() {
             ! function() {
                 pid.toBase36String('1000', 'foobar');
-            }
-                .should.not.throwError();
+            }.should.not.throwError();
         });
     });
 
