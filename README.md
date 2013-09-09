@@ -36,7 +36,7 @@ After the first puid release, I was testing for some shorter UIDs. In result, th
 
 ### Configure short-puid
 
-You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-08-02 03:00:00 pm", and you can pass the nodeId. Take a look to the usage section for all possiblities.
+You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-06-07 03:00:00 pm GMT", and you can pass the nodeId. Take a look to the usage section for all possiblities.
 
 
 ## Usecase

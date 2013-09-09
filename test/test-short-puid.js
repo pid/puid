@@ -175,6 +175,13 @@ describe('test short puid', function() {
             .should.match(/[a-z0-9]+/);
 
     });
+    
+    it('should have specific default epoch value"', function() {
+
+        var pid = new Puid(false);
+
+        pid.config.epoch.should.equal("1999-06-07 03:00:00 pm GMT");
+    });
 });
 
 //
