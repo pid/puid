@@ -1,3 +1,5 @@
+/* jshint -W030 */
+
 var Puid = require('../lib/puid');
 
 function getEpoch(years) {
@@ -18,7 +20,7 @@ describe('test short puid', function() {
         var pid = new Puid('ab');
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
@@ -32,7 +34,7 @@ describe('test short puid', function() {
         var pid = new Puid('AB');
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
@@ -46,7 +48,7 @@ describe('test short puid', function() {
         var pid = new Puid('random');
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
@@ -59,7 +61,7 @@ describe('test short puid', function() {
         var pid = new Puid('');
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(12);
         pid.generate()
@@ -74,7 +76,7 @@ describe('test short puid', function() {
         });
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(12);
         pid.generate()
@@ -89,7 +91,7 @@ describe('test short puid', function() {
         });
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
@@ -105,7 +107,7 @@ describe('test short puid', function() {
         });
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
@@ -122,7 +124,7 @@ describe('test short puid', function() {
         });
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
@@ -140,7 +142,7 @@ describe('test short puid', function() {
         });
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(12);
         pid.generate()
@@ -155,7 +157,7 @@ describe('test short puid', function() {
         var pid = new Puid(true);
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(12);
         pid.generate()
@@ -168,14 +170,14 @@ describe('test short puid', function() {
         var pid = new Puid(false);
 
         pid.generate()
-            .should.be.a('string');
+            .should.be.a.String;
         pid.generate()
             .should.have.length(14);
         pid.generate()
             .should.match(/[a-z0-9]+/);
 
     });
-    
+
     it('should have specific default epoch value"', function() {
 
         var pid = new Puid(false);

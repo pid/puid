@@ -1,4 +1,4 @@
-/* jshint -W015: true, -W030: true */
+/* jshint -W015: true, -W030 */
 var Puid = require('../lib/puid');
 var pid = new Puid();
 
@@ -6,162 +6,147 @@ var oldpid = pid.generate();
 
 var m0 = {
     lo0: [{
-            address: 'fe80::1',
-            family: 'IPv6',
-            internal: true
-        }, {
-            address: '127.0.0.1',
-            family: 'IPv4',
-            internal: true
-        }, {
-            address: '::1',
-            family: 'IPv6',
-            internal: true
-        }
-    ],
+        address: 'fe80::1',
+        family: 'IPv6',
+        internal: true
+    }, {
+        address: '127.0.0.1',
+        family: 'IPv4',
+        internal: true
+    }, {
+        address: '::1',
+        family: 'IPv6',
+        internal: true
+    }],
     en1: [{
-            address: 'fe80::7bc3:8ac3:ea45:c34a',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: '192.168.3.22',
-            family: 'IPv4',
-            internal: false
-        }
-    ],
+        address: 'fe80::7bc3:8ac3:ea45:c34a',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: '192.168.3.22',
+        family: 'IPv4',
+        internal: false
+    }],
     vnic0: [{
-            address: '10.211.55.2',
-            family: 'IPv4',
-            internal: false
-        }
-    ],
+        address: '10.211.55.2',
+        family: 'IPv4',
+        internal: false
+    }],
     vnic1: [{
-            address: '10.37.129.2',
-            family: 'IPv4',
-            internal: false
-        }
-    ]
+        address: '10.37.129.2',
+        family: 'IPv4',
+        internal: false
+    }]
 };
 
 var m1 = {
     'Drahtlosnetzwerkverbindung': [{
-            address: 'fe80::f322:3e0f:ced6:5b83',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: '192.168.2.103',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: 'fe80::f322:3e0f:ced6:5b83',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: '192.168.2.103',
+        family: 'IPv4',
+        internal: true
+    }],
     'LAN-Verbindung':  [{
-            address: 'fe80::93d3:34c9:7e0a:edc3',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: '192.168.2.10',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: 'fe80::93d3:34c9:7e0a:edc3',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: '192.168.2.10',
+        family: 'IPv4',
+        internal: true
+    }],
 
     'VMware Network Adapter VMnet1': [{
-            address: 'fe80::1c3e:c641:340e:ea23',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: '169.254.6.66',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: 'fe80::1c3e:c641:340e:ea23',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: '169.254.6.66',
+        family: 'IPv4',
+        internal: true
+    }],
 
     'VMware Network Adapter VMnet8':  [{
-            address: 'fe80::6465:562d:2b25:34ef',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: '192.168.142.1',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: 'fe80::6465:562d:2b25:34ef',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: '192.168.142.1',
+        family: 'IPv4',
+        internal: true
+    }],
     'Loopback Pseudo-Interface 1':  [{
-            address: '::1',
-            family: 'IPv6',
-            internal: true
-        }, {
-            address: '127.0.0.1',
-            family: 'IPv4',
-            internal: true
-        }
-    ]
+        address: '::1',
+        family: 'IPv6',
+        internal: true
+    }, {
+        address: '127.0.0.1',
+        family: 'IPv4',
+        internal: true
+    }]
 };
 
 var m2 = {
     Ethernet:  [{
-            address: 'fe80::cabf:e927:f866:8f3e',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: '10.16.16.22',
-            family: 'IPv4',
-            internal: false
-        }
-    ],
+        address: 'fe80::cabf:e927:f866:8f3e',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: '10.16.16.22',
+        family: 'IPv4',
+        internal: false
+    }],
     'Loopback Pseudo-Interface 1':  [{
-            address: '::1',
-            family: 'IPv6',
-            internal: true
-        }, {
-            address: '127.0.0.1',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: '::1',
+        family: 'IPv6',
+        internal: true
+    }, {
+        address: '127.0.0.1',
+        family: 'IPv4',
+        internal: true
+    }],
     'LAN-Verbindung* 11':  [{
-            address: '2001:3450:5af1:29fe:375a:fb8f:e54f:af39',
-            family: 'IPv6',
-            internal: false
-        }, {
-            address: 'fe80::8493:ab4f:e54f:cf39',
-            family: 'IPv6',
-            internal: false
-        }
-    ]
+        address: '2001:3450:5af1:29fe:375a:fb8f:e54f:af39',
+        family: 'IPv6',
+        internal: false
+    }, {
+        address: 'fe80::8493:ab4f:e54f:cf39',
+        family: 'IPv6',
+        internal: false
+    }]
 };
 
 var m3 = {
     Ethernet:  [{
-            address: 'fe80::cabf:e927:f866:8f3e',
-            family: 'IPv6',
-            internal: true
-        }, {
-            address: '10.16.16.22',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: 'fe80::cabf:e927:f866:8f3e',
+        family: 'IPv6',
+        internal: true
+    }, {
+        address: '10.16.16.22',
+        family: 'IPv4',
+        internal: true
+    }],
     'Loopback Pseudo-Interface 1':  [{
-            address: '::1',
-            family: 'IPv6',
-            internal: true
-        }, {
-            address: '127.0.0.1',
-            family: 'IPv4',
-            internal: true
-        }
-    ],
+        address: '::1',
+        family: 'IPv6',
+        internal: true
+    }, {
+        address: '127.0.0.1',
+        family: 'IPv4',
+        internal: true
+    }],
     'LAN-Verbindung* 11':  [{
-            address: '2001:3450:5af1:29fe:375a:fb8f:e54f:af39',
-            family: 'IPv6',
-            internal: true
-        }, {
-            address: 'fe80::8493:ab4f:e54f:cf39',
-            family: 'IPv6',
-            internal: true
-        }
-    ]
+        address: '2001:3450:5af1:29fe:375a:fb8f:e54f:af39',
+        family: 'IPv6',
+        internal: true
+    }, {
+        address: 'fe80::8493:ab4f:e54f:cf39',
+        family: 'IPv6',
+        internal: true
+    }]
 };
 
 describe('test long puid', function() {
@@ -170,7 +155,7 @@ describe('test long puid', function() {
 
         it('should be a string with 8 chars', function() {
             pid.getTimestamp()
-                .should.be.a('string');
+                .should.be.a.String;
             pid.getTimestamp()
                 .should.have.length(8);
         });
@@ -190,7 +175,7 @@ describe('test long puid', function() {
 
         it('should be a string with 6 chars', function() {
             pid.getNodeId()
-                .should.be.a('string');
+                .should.be.a.String;
             pid.getNodeId()
                 .should.have.length(6);
         });
@@ -234,7 +219,7 @@ describe('test long puid', function() {
 
         it('should be a string with 4 chars', function() {
             pid.getProcessId()
-                .should.be.a('string');
+                .should.be.a.String;
             pid.getProcessId()
                 .should.have.length(4);
         });
@@ -250,8 +235,7 @@ describe('test long puid', function() {
         });
 
         it('internal function process.pid is available', function() {
-            (process)
-                .should.be.a('object');
+            (process).should.be.an.Object;
             (typeof process.pid)
                 .should.not.be.equal('undefined');
         });
@@ -261,7 +245,7 @@ describe('test long puid', function() {
 
         it('should be a string with 6 chars', function() {
             pid.getCounter()
-                .should.be.a('string');
+                .should.be.a.String;
             pid.getCounter()
                 .should.have.length(6);
         });
@@ -277,8 +261,7 @@ describe('test long puid', function() {
         });
 
         it('internal function process.hrtime is available', function() {
-            (process)
-                .should.be.a('object');
+            (process).should.be.an.Object;
             (typeof process.hrtime)
                 .should.not.be.equal('undefined');
         });
@@ -288,7 +271,7 @@ describe('test long puid', function() {
 
         it('should be a string with 24 chars', function() {
             pid.generate()
-                .should.be.a('string');
+                .should.be.a.String;
             pid.generate()
                 .should.have.length(24);
         });
