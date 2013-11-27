@@ -1,47 +1,47 @@
 {
-  "name": "puid",
-  "version": "0.5.0",
-  "description": "Generate an unique ID for use in a distributed environment.",
-  "keywords": [
-    "oid",
-    "uid",
-    "uuid",
-    "uniqueid",
-    "unique id",
-    "short id",
-    "primary key",
-    "distributed environment"
-  ],
-  "author": {
-    "name": "Sascha Droste",
-    "email": "sascha.droste@gmail.com",
-    "url": "https://plus.google.com/118215422942628160262/about"
-  },
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "mocha": "~1.13.0",
-    "should": "~2.0.2",
-    "grunt-cafe-mocha": "~0.1.8",
-    "grunt-release": "~0.6.0",
-    "grunt-contrib-jshint": "~0.7.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt": "~0.4.1"
-  },
-  "scripts": {
-    "test": "mocha -R spec"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/pid/puid.git"
-  },
-  "engines": {
-    "node": ">=0.8.0"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/pid/puid/master/LICENSE"
-    }
-  ]
+ "name": "puid",
+ "version": "0.5.1",
+ "description": "Generate an unique ID for use in a distributed environment.",
+ "keywords": [
+  "oid",
+  "uid",
+  "uuid",
+  "uniqueid",
+  "unique id",
+  "short id",
+  "primary key",
+  "distributed environment"
+ ],
+ "author": {
+  "name": "Sascha Droste",
+  "email": "pid@posteo.net",
+  "url": "https://plus.google.com/118215422942628160262/about"
+ },
+ "main": "index.js",
+ "dependencies": {},
+ "devDependencies": {
+  "mocha": "~1.14.0",
+  "should": "~2.1.0",
+  "grunt-cafe-mocha": "~0.1.8",
+  "grunt-release": "~0.6.0",
+  "grunt-contrib-jshint": "~0.7.0",
+  "grunt-contrib-watch": "~0.5.3",
+  "grunt": "~0.4.1"
+ },
+ "scripts": {
+  "test": "mocha -R spec"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git://github.com/pid/puid.git"
+ },
+ "engines": {
+  "node": ">=0.8.0"
+ },
+ "licenses": [
+  {
+   "type": "MIT",
+   "url": "https://raw.github.com/pid/puid/master/LICENSE"
+  }
+ ]
 }
