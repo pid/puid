@@ -141,7 +141,7 @@ console.log(puid.generate());   // 036pqlnkkjk0
 
 [MIT](https://raw.github.com/pid/puid/master/LICENSE)
 
-Copyright (c) 2013 Sascha Droste <sascha.droste@gmail.com>
+Copyright (c) 2013-2014 Sascha Droste <pid@posteo.net>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
