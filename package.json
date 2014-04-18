@@ -1,6 +1,6 @@
 {
     "name": "puid",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "description": "Generate an unique ID for use in a distributed environment.",
     "keywords": [
         "oid",
@@ -36,10 +36,12 @@
         "url": "git://github.com/pid/puid.git"
     },
     "engines": {
-        "node": ">=0.8.0"
+        "node": ">=0.10.0"
     },
-    "licenses": [{
-        "type": "MIT",
-        "url": "https://raw.github.com/pid/puid/master/LICENSE"
-    }]
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/pid/puid/master/LICENSE"
+        }
+    ]
 }
