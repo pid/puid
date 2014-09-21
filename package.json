@@ -21,7 +21,7 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-bumpup": "^0.6.0",
+    "grunt-bumpup": "^0.6.1",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-release": "^0.7.0",
@@ -29,7 +29,7 @@
     "should": "^4.0.4"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "./node_modules/mocha/bin/mocha -R spec"
   },
   "repository": {
     "type": "git",
