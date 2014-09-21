@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('mocha', 'run mocha', function() {
         var done = this.async();
-        require('child_process').exec('mocha', function(err, stdout) {
+        require('child_process').exec('./node_modules/mocha/bin/mocha', function(err, stdout) {
             grunt.log.write(stdout);
             done(err);
         });
