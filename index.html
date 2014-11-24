@@ -35,12 +35,12 @@
 <a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
 
 <h1>
-<a name="puid---primary-unique-id" class="anchor" href="#puid---primary-unique-id"><span class="octicon octicon-link"></span></a>puid - primary unique id</h1>
+<a id="puid---primary-unique-id" class="anchor" href="#puid---primary-unique-id" aria-hidden="true"><span class="octicon octicon-link"></span></a>puid - primary unique id</h1>
 
 <p>Generate an unique ID depending on time, machine and process for use in a distributed environment.</p>
 
 <h2>
-<a name="puid---24-characters-uid" class="anchor" href="#puid---24-characters-uid"><span class="octicon octicon-link"></span></a>puid - 24 characters uid</h2>
+<a id="puid---24-characters-uid" class="anchor" href="#puid---24-characters-uid" aria-hidden="true"><span class="octicon octicon-link"></span></a>puid - 24 characters uid</h2>
 
 <p>Each unique ID has 4 sections and has 24 chars, which are:</p>
 
@@ -51,12 +51,14 @@
 <li>machineId:    '2504cd'    // (6) First 6 chars from md5 of first external network interface or fallback to hostname</li>
 <li>processId:    '1w3a'      // (4) pid</li>
 <li>counter:      'g8ut8e'    // (6) High-resolution real time; nanoseconds</li>
-</ul><p>All values (except machineID) are converted to base36.</p>
+</ul>
+
+<p>All values (except machineID) are converted to base36.</p>
 
 <p>Why is the counter not really a counter? Because of collision, it's more likely that the same machine and process use (accidently!) two puid-objects (async) and generate an Id at the same microsecond with identical counter. That the same process will execute the counter function within the same nanosecond should be impossible (imo) - feedback is welcome.</p>
 
 <h2>
-<a name="puid---short-puid---12-14-characters-uid" class="anchor" href="#puid---short-puid---12-14-characters-uid"><span class="octicon octicon-link"></span></a>puid - short puid - 12-14 characters uid</h2>
+<a id="puid---short-puid---12-14-characters-uid" class="anchor" href="#puid---short-puid---12-14-characters-uid" aria-hidden="true"><span class="octicon octicon-link"></span></a>puid - short puid - 12-14 characters uid</h2>
 
 <p>Each unique ID has 2 sections and has 12 chars without nodeId or 14 chars with nodeId, which are:</p>
 
@@ -69,110 +71,107 @@
 <p>After the first puid release, I was testing for some shorter UIDs. In result, the short-puid was born ;-). Works only with node.js (depends on process.hrtime). The process.hrtime[1] gives you a counter (milliseconds+nanoseconds value from 1 to 1_000_000_000) not depending of the current timestamp; in result you can use short-puid (12 chars version) without any conflicts with multi-instances of puid in the same process or in different processes on the same host (tested with 20 parallel instances generating 4 billion puids). With multi nodes/hosts, you have to use the short-version with 14 chars which includes a nodeId.</p>
 
 <h3>
-<a name="configure-short-puid" class="anchor" href="#configure-short-puid"><span class="octicon octicon-link"></span></a>Configure short-puid</h3>
+<a id="configure-short-puid" class="anchor" href="#configure-short-puid" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure short-puid</h3>
 
 <p>You have options :-) You can pass the epoch to start counting the timestamp, per default we start at "1999-06-07 03:00:00 pm GMT", and you can pass the nodeId. Take a look to the usage section for all possiblities.</p>
 
 <h2>
-<a name="usecase" class="anchor" href="#usecase"><span class="octicon octicon-link"></span></a>Usecase</h2>
+<a id="usecase" class="anchor" href="#usecase" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usecase</h2>
 
 <p>Generate unique keys for e.g. Redis.</p>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p><a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
 
-<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm install puid
-</pre></div>
+<div class="highlight highlight-bash"><pre>$ npm install puid</pre></div>
 
 <h2>
-<a name="running-tests" class="anchor" href="#running-tests"><span class="octicon octicon-link"></span></a>Running tests</h2>
+<a id="running-tests" class="anchor" href="#running-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running tests</h2>
 
 <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a></p>
 
-<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
-</pre></div>
+<div class="highlight highlight-bash"><pre>$ npm <span class="pl-s3">test</span></pre></div>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <div class="highlight highlight-js"><pre>
-<span class="kd">var</span> <span class="nx">Puid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'puid'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">puid</span><span class="p">;</span>
+<span class="pl-s">var</span> Puid <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>puid<span class="pl-pds">'</span></span>);
+<span class="pl-s">var</span> puid;
 
-<span class="c1">// generate puid (long-version 24-chars) </span>
+<span class="pl-c">// generate puid (long-version 24-chars) </span>
 
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// hgqy29gr11cm2504cdf8rg7q</span>
-
-
-<span class="c1">// generate puid (short-version 12-chars) without nodeId / **Shortcut**</span>
-
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>  <span class="c1">// 3bqk9my968mc</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>();
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// hgqy29gr11cm2504cdf8rg7q</span>
 
 
-<span class="c1">// generate puid (short-version 14-chars) random nodeId / **Shortcut**</span>
+<span class="pl-c">// generate puid (short-version 12-chars) without nodeId / **Shortcut**</span>
 
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>  <span class="c1">// 3bqk9my9buecut</span>
-
-
-<span class="c1">// generate puid (short-version 14-chars) with nodeId string</span>
-
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="s1">'JS'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 3bq1plt0vlycjs // 3bq1plt0vlyc-&gt;(js)</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-c1">true</span>);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());  <span class="pl-c">// 3bqk9my968mc</span>
 
 
-<span class="c1">// generate puid (short-version 12-chars) with empty nodeId string</span>
+<span class="pl-c">// generate puid (short-version 14-chars) random nodeId / **Shortcut**</span>
 
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 3bq1plt1iiw4</span>
-
-
-<span class="c1">// generate puid (short-version 14-chars) with nodeId in config object</span>
-
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
-    <span class="nx">nodeId</span><span class="o">:</span> <span class="s1">'JS'</span>
-<span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 3bq1plt1ljwgjs // 3bq1plt1ljwg-&gt;(js)</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-c1">false</span>);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());  <span class="pl-c">// 3bqk9my9buecut</span>
 
 
-<span class="c1">// generate puid (short-version 14-chars) with epoch in config object and random nodeId</span>
+<span class="pl-c">// generate puid (short-version 14-chars) with nodeId string</span>
 
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
-    <span class="nx">epoch</span><span class="o">:</span> <span class="s1">'1980-01-01'</span>
-<span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 801eeqggvq0w54</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-s1"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt0vlycjs // 3bq1plt0vlyc-&gt;(js)</span>
 
 
-<span class="c1">// generate puid (short-version 14-chars) with epoch and nodeId in config object</span>
+<span class="pl-c">// generate puid (short-version 12-chars) with empty nodeId string</span>
 
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
-    <span class="nx">epoch</span><span class="o">:</span> <span class="s1">'1980-01-01'</span><span class="p">,</span>
-    <span class="nx">nodeId</span><span class="o">:</span> <span class="s1">'JS'</span>
-<span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 801eeqggyo00js // 801eeqggyo00-&gt;(js)</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt1iiw4</span>
 
 
-<span class="c1">// generate puid (short-version 12-chars) with epoch and empty nodeId in config object</span>
+<span class="pl-c">// generate puid (short-version 14-chars) with nodeId in config object</span>
 
-<span class="nx">puid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Puid</span><span class="p">({</span>
-    <span class="nx">epoch</span><span class="o">:</span> <span class="s1">'2013-01-01'</span><span class="p">,</span>
-    <span class="nx">nodeId</span><span class="o">:</span> <span class="s1">''</span>
-<span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">puid</span><span class="p">.</span><span class="nx">generate</span><span class="p">());</span>   <span class="c1">// 036pqlnkkjk0</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
+    nodeId<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>
+});
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt1ljwgjs // 3bq1plt1ljwg-&gt;(js)</span>
 
+
+<span class="pl-c">// generate puid (short-version 14-chars) with epoch in config object and random nodeId</span>
+
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
+    epoch<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>1980-01-01<span class="pl-pds">'</span></span>
+});
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 801eeqggvq0w54</span>
+
+
+<span class="pl-c">// generate puid (short-version 14-chars) with epoch and nodeId in config object</span>
+
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
+    epoch<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>1980-01-01<span class="pl-pds">'</span></span>,
+    nodeId<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>
+});
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 801eeqggyo00js // 801eeqggyo00-&gt;(js)</span>
+
+
+<span class="pl-c">// generate puid (short-version 12-chars) with epoch and empty nodeId in config object</span>
+
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
+    epoch<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>2013-01-01<span class="pl-pds">'</span></span>,
+    nodeId<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+});
+<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 036pqlnkkjk0</span>
 
 </pre></div>
 
 <h2>
-<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a><a href="https://raw.github.com/pid/puid/master/Changelog">Changelog</a>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://raw.github.com/pid/puid/master/Changelog">Changelog</a>
 </h2>
 
 <h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p><a href="https://raw.github.com/pid/puid/master/LICENSE">MIT</a></p>
 
