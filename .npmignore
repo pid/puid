@@ -41,3 +41,11 @@ logs/
 ######################
 .DS_Store*
 Icon?
+
+
+.travis.yml
+.jshintrc
+.editorconfig
+test/
+examples/
+Gruntfile.js
