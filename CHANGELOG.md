@@ -1,6 +1,7 @@
 Changelog
 =========
 
+-	v1.0.5 update dev dependencies
 -	v1.0.4 add unnecessary files/dirs to .npmignore
 -	v1.0.x update dev dependencies
 -	v1.0.0 Release Version 1.0 with stable API

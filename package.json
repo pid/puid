@@ -1,6 +1,6 @@
 {
   "name": "puid",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generate an unique ID for use in a distributed environment.",
   "keywords": [
     "oid",
@@ -24,9 +24,9 @@
     "grunt-bumpup": "^0.6.2",
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-release": "^0.11.0",
+    "grunt-release": "^0.12.0",
     "mocha": "^2.0.1",
-    "should": "^5.0.1"
+    "should": "^6.0.1"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha -R spec"
