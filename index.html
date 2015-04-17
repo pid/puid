@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Puid - Primary unique ID : Generate an unique ID depending on time, machine and process for use in a distributed environment.">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Puid - Primary unique ID</title>
+    <meta charset="UTF-8">
+    <title>Puid - Primary unique ID by pid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Puid - Primary unique ID</h1>
+      <h2 class="project-tagline">Generate an unique ID depending on time, machine and process for use in a distributed environment.</h2>
+      <a href="https://github.com/pid/puid" class="btn">View on GitHub</a>
+      <a href="https://github.com/pid/puid/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/pid/puid/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/pid/puid">View on GitHub</a>
-
-          <h1 id="project_title">Puid - Primary unique ID</h1>
-          <h2 id="project_tagline">Generate an unique ID depending on time, machine and process for use in a distributed environment.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/pid/puid/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/pid/puid/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a>
-<a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
+    <section class="main-content">
+      <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a><a href="http://badge.fury.io/js/puid"><img src="https://badge.fury.io/js/puid.png" alt="NPM version"></a></p>
 
 <h1>
 <a id="puid---primary-unique-id" class="anchor" href="#puid---primary-unique-id" aria-hidden="true"><span class="octicon octicon-link"></span></a>puid - primary unique id</h1>
@@ -47,10 +34,10 @@
 <p>i.e. he5fps6l2504cd1w3ag8ut8e // he5fps6l-2504cd-1w3a-g8ut8e</p>
 
 <ul>
-<li>timestamp:    'he5fps6l'  // (8) Timestamp in microseconds - safe until 2059</li>
-<li>machineId:    '2504cd'    // (6) First 6 chars from md5 of first external network interface or fallback to hostname</li>
-<li>processId:    '1w3a'      // (4) pid</li>
-<li>counter:      'g8ut8e'    // (6) High-resolution real time; nanoseconds</li>
+<li>  timestamp: 'he5fps6l' // (8) Timestamp in microseconds - safe until 2059</li>
+<li>  machineId: '2504cd' // (6) First 6 chars from md5 of first external network interface or fallback to hostname</li>
+<li>  processId: '1w3a' // (4) pid</li>
+<li>  counter: 'g8ut8e' // (6) High-resolution real time; nanoseconds</li>
 </ul>
 
 <p>All values (except machineID) are converted to base36.</p>
@@ -62,10 +49,10 @@
 
 <p>Each unique ID has 2 sections and has 12 chars without nodeId or 14 chars with nodeId, which are:</p>
 
-<pre><code>i.e. with 14-chars: aeby6ob5sso4zd // aeby6ob5sso4-zd
+<pre><code>i.e. with 14-chars: aeby6ob5sso4zd  // aeby6ob5sso4-zd
 
-- timestamp:    'aeby6ob5sso4'  // (12) Timestamp in seconds + hrtime counter
-- nodeId:       'zd'            // (2) nodeId
+- timestamp:    'aeby6ob5sso4'      // (12) Timestamp in seconds + hrtime counter
+- nodeId:       'zd'                   // (2) nodeId
 </code></pre>
 
 <p>After the first puid release, I was testing for some shorter UIDs. In result, the short-puid was born ;-). Works only with node.js (depends on process.hrtime). The process.hrtime[1] gives you a counter (milliseconds+nanoseconds value from 1 to 1_000_000_000) not depending of the current timestamp; in result you can use short-puid (12 chars version) without any conflicts with multi-instances of puid in the same process or in different processes on the same host (tested with 20 parallel instances generating 4 billion puids). With multi nodes/hosts, you have to use the short-version with 14 chars which includes a nodeId.</p>
@@ -92,77 +79,77 @@
 
 <p><a href="https://travis-ci.org/pid/puid"><img src="https://travis-ci.org/pid/puid.png" alt="Build Status"></a></p>
 
-<div class="highlight highlight-bash"><pre>$ npm <span class="pl-s3">test</span></pre></div>
+<div class="highlight highlight-bash"><pre>$ npm <span class="pl-c1">test</span></pre></div>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <div class="highlight highlight-js"><pre>
-<span class="pl-s">var</span> Puid <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>puid<span class="pl-pds">'</span></span>);
-<span class="pl-s">var</span> puid;
+<span class="pl-k">var</span> Puid <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>puid<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> puid;
 
-<span class="pl-c">// generate puid (long-version 24-chars) </span>
+<span class="pl-c">// generate puid (long-version 24-chars)</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>();
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// hgqy29gr11cm2504cdf8rg7q</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// hgqy29gr11cm2504cdf8rg7q</span>
 
 
 <span class="pl-c">// generate puid (short-version 12-chars) without nodeId / **Shortcut**</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-c1">true</span>);
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());  <span class="pl-c">// 3bqk9my968mc</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());  <span class="pl-c">// 3bqk9my968mc</span>
 
 
 <span class="pl-c">// generate puid (short-version 14-chars) random nodeId / **Shortcut**</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-c1">false</span>);
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());  <span class="pl-c">// 3bqk9my9buecut</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());  <span class="pl-c">// 3bqk9my9buecut</span>
 
 
 <span class="pl-c">// generate puid (short-version 14-chars) with nodeId string</span>
 
-puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-s1"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>);
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt0vlycjs // 3bq1plt0vlyc-&gt;(js)</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-s"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt0vlycjs // 3bq1plt0vlyc-&gt;(js)</span>
 
 
 <span class="pl-c">// generate puid (short-version 12-chars) with empty nodeId string</span>
 
-puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>);
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt1iiw4</span>
+puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt1iiw4</span>
 
 
 <span class="pl-c">// generate puid (short-version 14-chars) with nodeId in config object</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
-    nodeId<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>
+    nodeId<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>
 });
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt1ljwgjs // 3bq1plt1ljwg-&gt;(js)</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// 3bq1plt1ljwgjs // 3bq1plt1ljwg-&gt;(js)</span>
 
 
 <span class="pl-c">// generate puid (short-version 14-chars) with epoch in config object and random nodeId</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
-    epoch<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>1980-01-01<span class="pl-pds">'</span></span>
+    epoch<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>1980-01-01<span class="pl-pds">'</span></span>
 });
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 801eeqggvq0w54</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// 801eeqggvq0w54</span>
 
 
 <span class="pl-c">// generate puid (short-version 14-chars) with epoch and nodeId in config object</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
-    epoch<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>1980-01-01<span class="pl-pds">'</span></span>,
-    nodeId<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>
+    epoch<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>1980-01-01<span class="pl-pds">'</span></span>,
+    nodeId<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>JS<span class="pl-pds">'</span></span>
 });
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 801eeqggyo00js // 801eeqggyo00-&gt;(js)</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// 801eeqggyo00js // 801eeqggyo00-&gt;(js)</span>
 
 
 <span class="pl-c">// generate puid (short-version 12-chars) with epoch and empty nodeId in config object</span>
 
 puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Puid</span>({
-    epoch<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>2013-01-01<span class="pl-pds">'</span></span>,
-    nodeId<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+    epoch<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>2013-01-01<span class="pl-pds">'</span></span>,
+    nodeId<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
 });
-<span class="pl-en">console</span><span class="pl-s3">.log</span>(puid.generate());   <span class="pl-c">// 036pqlnkkjk0</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(puid.generate());   <span class="pl-c">// 036pqlnkkjk0</span>
 
 </pre></div>
 
@@ -175,39 +162,25 @@ puid <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-e
 
 <p><a href="https://raw.github.com/pid/puid/master/LICENSE">MIT</a></p>
 
-<p>Copyright (c) 2013-2014 Sascha Droste <a href="mailto:pid@posteo.net">pid@posteo.net</a></p>
+<p>Copyright (c) 2013-2015 Sascha Droste <a href="mailto:pid@posteo.net">pid@posteo.net</a></p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 
-<p>The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
-<p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/pid/puid/trend.png" alt="Bitdeli Badge"></a></p>
-      </section>
-    </div>
+<p><a href="https://bitdeli.com/free"><img src="https://d2weczhvl823v0.cloudfront.net/pid/puid/trend.png" alt="Bitdeli Badge"></a></p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Puid - Primary unique ID maintained by <a href="https://github.com/pid">pid</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/pid/puid">Puid - Primary unique ID</a> is maintained by <a href="https://github.com/pid">pid</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
+
