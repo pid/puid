@@ -8,7 +8,7 @@ console.log("\ngenerate puid (long-version)\n");
 
 puid = new Puid();
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 33; i++) {
     console.log(puid.generate());
 }
 

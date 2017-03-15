@@ -132,8 +132,14 @@ puid = new Puid({
     nodeId: ''
 });
 console.log(puid.generate());   // 036pqlnkkjk0
+```
 
-
+Contribution
+------------
+```
+grunt default
+grunt bumpup # --minor || --major || --patch
+grunt release
 ```
 
 [Changelog](https://raw.github.com/pid/puid/master/Changelog)
@@ -144,7 +150,7 @@ License
 
 [MIT](https://raw.github.com/pid/puid/master/LICENSE)
 
-Copyright (c) 2013-2015 Sascha Droste pid@posteo.net
+Copyright (c) 2013-2017 Sascha Droste pid@posteo.net
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
