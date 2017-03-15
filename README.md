@@ -139,7 +139,8 @@ Contribution
 ```
 grunt default
 grunt bumpup # --minor || --major || --patch
-grunt release
+git add <files> # --all
+grunt release   # all files on stage will be commited with release commit message
 ```
 
 [Changelog](https://raw.github.com/pid/puid/master/Changelog)
