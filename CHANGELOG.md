@@ -1,6 +1,7 @@
 Changelog
 =========
 
+-	v1.0.7 v1.0.6 npm release failed, yeahhh :-(
 -	v1.0.6 update dev dependencies
 -	v1.0.5 update dev dependencies
 -	v1.0.4 add unnecessary files/dirs to .npmignore
