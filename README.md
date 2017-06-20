@@ -12,7 +12,7 @@ Each unique ID has 4 sections and has 24 chars, which are:
 
 i.e. he5fps6l2504cd1w3ag8ut8e // he5fps6l-2504cd-1w3a-g8ut8e
 
--	timestamp: 'he5fps6l' // (8) Timestamp in microseconds - safe until 2059
+-	timestamp: 'he5fps6l' // (8) Timestamp in milliseconds - safe until 2059
 -	machineId: '2504cd' // (6) First 6 chars from md5 of first external network interface or fallback to hostname
 -	processId: '1w3a' // (4) pid
 -	counter: 'g8ut8e' // (6) High-resolution real time; nanoseconds
